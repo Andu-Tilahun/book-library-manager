@@ -1,0 +1,10 @@
+
+plugins {
+    id 'buildlogic.java-application-conventions'
+    id 'buildlogic.java-container-conventions'
+}
+
+dependencies {
+    implementation project(':user-application')
+    implementation project(':user-data')
+}
