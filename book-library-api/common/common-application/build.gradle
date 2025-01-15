@@ -1,0 +1,11 @@
+plugins {
+    id 'buildlogic.java-application-conventions'
+}
+
+dependencies {
+    implementation libs.org.springframework.boot.spring.boot.starter.web
+    implementation libs.org.springframework.security.spring.security.web
+    implementation libs.org.spring.boot.starter.oauth2.resource.server
+    implementation libs.org.projectlombok.lombok
+
+}
