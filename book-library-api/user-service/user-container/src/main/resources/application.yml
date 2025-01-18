@@ -1,2 +1,33 @@
 server:
   port: 8089
+
+bms:
+  service-name: user-service
+
+user-service:
+  env: local
+
+spring:
+  application:
+    name: bms-user-service-${user-service.env}
+  jpa:
+    open-in-view: true
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bms_db?currentSchema=bms_user_${user-service.env}&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      schema: bms_user_${user-service.env}
+  flyway:
+    url: jdbc:postgresql://localhost:5432/bms_db
+    user: postgres
+    password: admin
+    schemas: bms_user_local
+    locations:
+      - classpath:db/migration/structure

@@ -46,16 +46,25 @@ public class Response<T> {
         this.message = message;
     }
 
+    public Response(T data, GlobalError globalError, List<ValidationError> validationErrors, String correlationId, String message) {
+        this.data = data;
+        this.error = globalError;
+        this.validationErrors = validationErrors;
+        this.correlationId = correlationId;
+        this.message = message;
+    }
+
+
     public Response(GlobalError globalError, String correlationId, String message) {
-        this(globalError, null, correlationId, message);
+        this(globalError,null, correlationId,message);
     }
 
     public Response(List<ValidationError> validationErrors, String correlationId, String message) {
-        this(null, validationErrors, correlationId, message);
+        this(null,validationErrors, correlationId,message);
     }
 
     public Response(GlobalError globalError, List<ValidationError> validationErrors, String correlationId, String message) {
-        this(null, globalError, validationErrors, correlationId, message);
+        this(null, globalError,validationErrors, correlationId, message);
     }
 }
 

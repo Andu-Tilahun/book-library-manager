@@ -4,7 +4,6 @@ import com.booklibrary.data.entity.AuditableEntity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.ZonedDateTime;
 import java.util.UUID;
 
 @Getter
@@ -12,7 +11,7 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "users", schema = "custom_user_local")
+@Table(name = "users", schema = "bms_user_local")
 @Entity
 public class UserEntity extends AuditableEntity {
     @Id

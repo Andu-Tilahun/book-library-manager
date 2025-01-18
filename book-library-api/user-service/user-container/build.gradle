@@ -5,6 +5,7 @@ plugins {
 }
 
 dependencies {
+    implementation project(':common-application')
     implementation project(':user-application')
     implementation project(':user-data')
 }
