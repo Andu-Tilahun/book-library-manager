@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  bms-postgres:
+    image: postgres
+    container_name: bms-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - bms
+    restart: unless-stopped
+
+  bms-keycloak:
+    image: quay.io/keycloak/keycloak:22.0.3 # Use the latest stable Keycloak version
+    hostname: bms-keycloak
+    container_name: bms-keycloak
+    environment:
+      KEYCLOAK_ADMIN: admin                  # Admin username
+      KEYCLOAK_ADMIN_PASSWORD: admin         # Admin password
+      KC_DB: postgres                        # Database type
+      KC_DB_URL: jdbc:postgresql://bms-postgres:5432/postgres # PostgreSQL URL
+      KC_DB_USERNAME: postgres               # PostgreSQL username
+      KC_DB_PASSWORD: admin                  # PostgreSQL password
+    ports:
+      - "8080:8080"                          # Keycloak HTTP port
+    command: start-dev                       # Start Keycloak in development mode
+    networks:
+      - bms
+    depends_on:
+      - bms-postgres
+
+volumes:
+  postgres:
+
+networks:
+  bms:
+    driver: bridge
