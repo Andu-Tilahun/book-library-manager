@@ -15,6 +15,7 @@ org-springframework-security-spring-security-config = "5.7.3"
 org-flywaydb-flyway-core = "8.0.5"
 org-mapstruct = "1.5.2.Final"
 javax-xml-bind-jaxb-api = "2.3.1"
+com-fasterxml-jackson-core = "2.3.1"
 
 
 
@@ -24,7 +25,7 @@ org-springframework-boot-spring-boot-starter-data-jpa = { module = "org.springfr
 org-springframework-boot-spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web", version.ref = "org-springframework-boot-spring-boot-starter" }
 org-springframework-boot-spring-boot-starter-validation = { module = "org.springframework.boot:spring-boot-starter-validation", version.ref = "org-springframework-boot-spring-boot-starter" }
 org-springframework-boot-spring-boot-starter-mail = {module = "org.springframework.boot:spring-boot-starter-mail", version.ref = "org-springframework-boot-spring-boot-starter"}
-
+com-fasterxml-jackson-core-jackson-annotations = {module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "com-fasterxml-jackson-core"}
 org-springframework-spring-tx = {module= "org.springframework:spring-tx", version.ref = "org-springframework"}
 org-springframework-spring-context = {module= "org.springframework:spring-context", version.ref = "org-springframework"}
 

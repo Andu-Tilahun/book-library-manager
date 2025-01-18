@@ -1,19 +1,13 @@
 plugins {
-    id 'java'
-}
-
-group 'org.example'
-version 'unspecified'
-
-repositories {
-    mavenCentral()
+    id 'buildlogic.java-application-conventions'
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-}
+    implementation project(':common-application')
+    implementation project(':user-data')
+    implementation libs.org.springframework.boot.spring.boot.starter.web
+    implementation libs.org.springframework.security.spring.security.web
+    implementation libs.com.fasterxml.jackson.core.jackson.annotations
+    implementation libs.org.projectlombok.lombok
 
-test {
-    useJUnitPlatform()
 }

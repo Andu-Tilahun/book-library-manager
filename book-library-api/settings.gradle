@@ -6,18 +6,22 @@
  */
 rootProject.name = 'book-library-api'
 
-include ':user-application'
-project(':user-application').projectDir = file('user-service/user-application')
-
-include ':user-container'
-project(':user-container').projectDir = file('user-service/user-container')
-
-include ':user-data'
-project(':user-data').projectDir = file('user-service/user-data')
 
 include ':common-application'
 project(':common-application').projectDir = file('common/common-application')
 
 include ':common-data'
 project(':common-data').projectDir = file('common/common-data')
+
+include ':user-application'
+project(':user-application').projectDir = file('user-service/user-application')
+
+include ':user-auth'
+project(':user-auth').projectDir = file('user-service/user-auth')
+
+include ':user-container'
+project(':user-container').projectDir = file('user-service/user-container')
+
+include ':user-data'
+project(':user-data').projectDir = file('user-service/user-data')
 
