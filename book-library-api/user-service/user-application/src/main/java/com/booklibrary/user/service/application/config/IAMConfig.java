@@ -10,16 +10,16 @@ public class IAMConfig {
     @Value("${iam.keycloak.endpoints.server-url}")
     private String serverUrl;
 
-    @Value("${iam.keycloak.cms-web-client-id}")
+    @Value("${iam.keycloak.bms-web-client-id}")
     private String webClientId;
 
-    @Value("${iam.keycloak.cms-web-client-secret}")
+    @Value("${iam.keycloak.bms-web-client-secret}")
     private String webClientSecret;
 
-    @Value("${iam.keycloak.cms-service-client-id}")
+    @Value("${iam.keycloak.bms-service-client-id}")
     private String serviceClientId;
 
-    @Value("${iam.keycloak.cms-service-client-secret}")
+    @Value("${iam.keycloak.bms-service-client-secret}")
     private String serviceClientSecret;
 
     @Value("${iam.keycloak.realm}")

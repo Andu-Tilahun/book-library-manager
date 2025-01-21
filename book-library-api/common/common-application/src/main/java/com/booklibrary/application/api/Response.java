@@ -19,7 +19,6 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
-@AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Response<T> {
 

@@ -7,10 +7,9 @@ import com.booklibrary.user.service.application.service.IAMService;
 import com.booklibrary.user.service.data.dto.UserDto;
 import com.booklibrary.user.service.data.ports.input.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.MediaType;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +32,7 @@ public class UserController {
         this.iamService = iamService;
         this.userService = userService;
     }
-
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public Response createUser(@RequestPart("user") UserDto userDto,
                                @RequestPart("profilePicture") MultipartFile profilePicture, HttpServletRequest request) throws IOException {
         //Call minIo
@@ -53,5 +52,9 @@ public class UserController {
         BCryptPasswordEncoder bCryptPasswordEncoder =
                 new BCryptPasswordEncoder(passWordStrength, new SecureRandom());
         return bCryptPasswordEncoder.encode(passWord);
+    }
+    @GetMapping
+    public String testUser(){
+        return "working...";
     }
 }

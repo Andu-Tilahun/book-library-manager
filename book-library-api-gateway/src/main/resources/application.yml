@@ -27,7 +27,7 @@ spring:
         - SaveSession
       routes:
         - id: user-service
-          uri: http://localhost:8086
+          uri: http://localhost:8089
           predicates:
             - Path=/user/**, /api/auth/**
 
@@ -42,7 +42,7 @@ spring:
             scope: openid
         provider:
           cms-internal-keycloak:
-            issuer-uri: http://localhost:8080/realms/bms-realm 
+            issuer-uri: http://localhost:8080/realms/bms-realm
 logging:
   level:
     root: warn

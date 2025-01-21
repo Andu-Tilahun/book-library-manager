@@ -31,3 +31,42 @@ spring:
     schemas: bms_user_local
     locations:
       - classpath:db/migration/structure
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/bms-realm
+
+      client:
+        registration:
+          bms-service-client:
+            client-id: bms-service-client
+            client-secret: ${BMS_SERVICE_CLIENT_SECRET}
+            provider: keycloak
+            authorization-grant-type: client_credentials
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8080/realms/bms-realm
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+  main:
+    allow-bean-definition-overriding: true
+
+iam:
+  keycloak:
+    realm: bms-realm
+    bms-web-client-id: bms-web-client
+    bms-web-client-secret: ${BMS_WEB_CLIENT_SECRET}
+    bms-service-client-id: bms-service-client
+    bms-service-client-secret: ${BMS_SERVICE_CLIENT_SECRET}
+    admin-client-id: bms-admin-client
+    admin-client-secret:
+    endpoints:
+      server-url: http://localhost:8080/
+      users: http://localhost:8080/admin/realms/bms-realm/users
+      token: http://localhost:8080/realms/bms-realm/protocol/openid-connect/token
+      clients: http://localhost:8080/admin/realms/bms-realm/clients
+      user-info: http://localhost/realms/bms-realm/protocol/openid-connect/userinfo
