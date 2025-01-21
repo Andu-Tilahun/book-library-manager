@@ -24,7 +24,7 @@ services:
       KEYCLOAK_ADMIN: admin                  # Admin username
       KEYCLOAK_ADMIN_PASSWORD: admin         # Admin password
       KC_DB: postgres                        # Database type
-      KC_DB_URL: jdbc:postgresql://bms-postgres:5432/postgres # PostgreSQL URL
+      KC_DB_URL: jdbc:postgresql://bms-postgres:5432/keycloak_auth # PostgreSQL URL
       KC_DB_USERNAME: postgres               # PostgreSQL username
       KC_DB_PASSWORD: admin                  # PostgreSQL password
     ports:
@@ -34,7 +34,17 @@ services:
       - bms
     depends_on:
       - bms-postgres
-
+  bms-redis:
+    image: "redis:latest"
+    container_name: "bms-redis"
+    restart: always
+    ports:
+      - '6379:6379'
+    volumes:
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+    networks:
+      - bms
 volumes:
   postgres:
 
