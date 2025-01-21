@@ -1,2 +1,52 @@
 server:
   port: 7272
+
+bms:
+  allowed-origins: http://localhost:4200
+  post-logout-redirect-uris: http://localhost:4200/sign-out-callback
+
+spring:
+  application:
+    name: booklibrary-api-gateway
+    session:
+      store-type: redis
+      timeout: 15m
+      redis:
+        namespace: bms:gateway
+    redis:
+      connect-timeout: 5s
+      host: localhost
+      port: 6379
+      timeout: 5s
+      password: P@$$w0rd
+
+  cloud:
+    gateway:
+      default-filters:
+        - TokenRelay
+        - SaveSession
+      routes:
+        - id: user-service
+          uri: http://localhost:8086
+          predicates:
+            - Path=/user/**, /api/auth/**
+
+  security:
+    oauth2:
+      client:
+        registration:
+          cms-internal-keycloak:
+            client-id: bms-web-client
+            client-secret: 9qmV3THGmdQmvnL3ebFeyh3OFLQ0iXE
+            redirect-uri: http://localhost:4200/sign-in-callback
+            scope: openid
+        provider:
+          cms-internal-keycloak:
+            issuer-uri: http://localhost:8080/realms/bms-realm 
+logging:
+  level:
+    root: warn
+    org.springframework: debug
+    et.gov.cms: debug
+
+
