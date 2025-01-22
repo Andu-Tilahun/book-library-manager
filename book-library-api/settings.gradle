@@ -25,3 +25,12 @@ project(':user-container').projectDir = file('user-service/user-container')
 include ':user-data'
 project(':user-data').projectDir = file('user-service/user-data')
 
+include ':book-data'
+project(':book-data').projectDir = file('book-service/book-data')
+
+include ':book-container'
+project(':book-container').projectDir = file('book-service/book-container')
+
+include ':book-application'
+project(':book-application').projectDir = file('book-service/book-application')
+

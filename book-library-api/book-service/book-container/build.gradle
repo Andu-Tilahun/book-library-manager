@@ -1,0 +1,9 @@
+
+plugins {
+    id 'buildlogic.java-application-conventions'
+//    id 'buildlogic.java-container-conventions'
+}
+
+dependencies {
+    implementation libs.org.springframework.boot.spring.boot.starter.web
+}
