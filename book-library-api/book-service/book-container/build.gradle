@@ -5,6 +5,7 @@ plugins {
 
 dependencies {
     implementation project(':common-application')
+    implementation project(':book-open-library')
     implementation project(':book-application')
     implementation project(':book-data')
     implementation libs.org.springframework.boot.spring.boot.starter.web

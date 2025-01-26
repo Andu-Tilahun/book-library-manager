@@ -4,6 +4,8 @@ import com.booklibrary.book.service.data.dto.BookDto;
 import com.booklibrary.book.service.data.entity.BookEntity;
 import org.springframework.stereotype.Component;
 
+import java.util.UUID;
+
 @Component
 public class BookMapper {
 
@@ -12,7 +14,7 @@ public class BookMapper {
             return null;
         }
         return BookEntity.builder()
-                .id(bookDto.getId())
+                .id(UUID.randomUUID())
                 .title(bookDto.getTitle())
                 .author(bookDto.getAuthor())
                 .isbn(bookDto.getIsbn())

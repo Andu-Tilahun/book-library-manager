@@ -21,9 +21,9 @@ public class JwtAuthConverter extends JwtAuthenticationConverter {
         Collection<GrantedAuthority> authorities = new HashSet<>();
         Map<String, Object> resourceAccess = jwt.getClaim("resource_access");
         if (resourceAccess != null) {
-            Map<String, Object> cmsClient = (Map<String, Object>) resourceAccess.get("cms-web-client");
-            if (cmsClient != null) {
-                List<String> roles = (List<String>) cmsClient.get("roles");
+            Map<String, Object> bmsClient = (Map<String, Object>) resourceAccess.get("bms-web-client");
+            if (bmsClient != null) {
+                List<String> roles = (List<String>) bmsClient.get("roles");
                 if (roles != null) {
                     authorities.addAll(roles.stream()
                             .map(role -> new SimpleGrantedAuthority("ROLE_" + role))

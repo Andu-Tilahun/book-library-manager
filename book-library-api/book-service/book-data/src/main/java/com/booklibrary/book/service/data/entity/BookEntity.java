@@ -1,11 +1,10 @@
 package com.booklibrary.book.service.data.entity;
 
+import com.booklibrary.data.entity.AuditableEntity;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -14,9 +13,10 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Table(name = "books", schema = "bms_book_local")
 @Entity
-public class BookEntity {
+public class BookEntity extends AuditableEntity {
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
     private String title;
     private String author;
     @Column(unique = true, nullable = false)
