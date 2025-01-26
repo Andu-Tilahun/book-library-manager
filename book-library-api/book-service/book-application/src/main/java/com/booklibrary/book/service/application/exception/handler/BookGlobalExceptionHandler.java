@@ -1,12 +1,12 @@
-package com.booklibrary.user.service.application.exception.handler;
+package com.booklibrary.book.service.application.exception.handler;
 
 import com.booklibrary.application.api.Response;
 import com.booklibrary.application.api.error.GlobalError;
 import com.booklibrary.application.constant.ErrorCodes;
 import com.booklibrary.application.util.CorrelationIdGenerator;
-import com.booklibrary.user.service.data.exception.UserDomainException;
-import com.booklibrary.user.service.data.exception.UserNotFoundException;
-import com.booklibrary.user.service.data.exception.UserValidationException;
+import com.booklibrary.book.service.data.exception.BookDomainException;
+import com.booklibrary.book.service.data.exception.BookNotFoundException;
+import com.booklibrary.book.service.data.exception.BookValidationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -17,11 +17,11 @@ import javax.servlet.http.HttpServletRequest;
 
 @Slf4j
 @RestControllerAdvice
-public class UserGlobalExceptionHandler {
-    @ExceptionHandler(value = {UserDomainException.class})
+public class BookGlobalExceptionHandler {
+    @ExceptionHandler(value = {BookDomainException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Response handleException(UserDomainException userDomainException) {
-        log.error(userDomainException.getMessage(), userDomainException);
+    public Response handleException(BookDomainException bookDomainException) {
+        log.error(bookDomainException.getMessage(), bookDomainException);
         return Response.builder()
                 .error(GlobalError
                         .builder()
@@ -31,10 +31,10 @@ public class UserGlobalExceptionHandler {
                 .build();
     }
 
-    @ExceptionHandler(value = {UserNotFoundException.class})
+    @ExceptionHandler(value = {BookNotFoundException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public Response handleException(UserNotFoundException userNotFoundException, HttpServletRequest request) {
-        log.error(userNotFoundException.getMessage(), userNotFoundException);
+    public Response handleException(BookNotFoundException bookNotFoundException, HttpServletRequest request) {
+        log.error(bookNotFoundException.getMessage(), bookNotFoundException);
         return Response.builder()
                 .error(GlobalError.
                         builder()
@@ -45,10 +45,10 @@ public class UserGlobalExceptionHandler {
                 .build();
     }
 
-    @ExceptionHandler(value = {UserValidationException.class})
+    @ExceptionHandler(value = {BookValidationException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Response handleException(UserValidationException userValidationException, HttpServletRequest request) {
-        log.error(userValidationException.getMessage(), userValidationException);
+    public Response handleException(BookValidationException bookValidationException, HttpServletRequest request) {
+        log.error(bookValidationException.getMessage(), bookValidationException);
         return Response.builder()
                 .error(GlobalError.
                         builder()

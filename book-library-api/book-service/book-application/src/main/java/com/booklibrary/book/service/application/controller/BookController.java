@@ -16,6 +16,7 @@ import java.io.IOException;
 @Slf4j
 @RestController
 @RequestMapping(value = "/book", produces = "application/vnd.api.v1+json")
+//@Validated
 public class BookController {
 
     private final BookService bookService;
@@ -26,6 +27,7 @@ public class BookController {
 
     @PostMapping
     public Response createBook(@RequestBody BookDto bookDto, HttpServletRequest request) throws IOException {
+        bookDto.validate();
         BookDto result = bookService.createBook(bookDto);
         return Response.builder()
                 .data(result)

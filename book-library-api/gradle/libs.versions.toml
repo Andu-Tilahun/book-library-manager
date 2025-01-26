@@ -16,8 +16,7 @@ org-flywaydb-flyway-core = "8.0.5"
 org-mapstruct = "1.5.2.Final"
 javax-xml-bind-jaxb-api = "2.3.1"
 com-fasterxml-jackson-core = "2.3.1"
-
-
+jakarta-validation-api = "3.0.0"
 
 [libraries]
 org-springframework-boot-spring-boot-starter = { module = "org.springframework.boot:spring-boot-starter", version.ref = "org-springframework-boot-spring-boot-starter" }
@@ -38,6 +37,7 @@ org-flywaydb-flyway-core = {module ="org.flywaydb:flyway-core", version.ref = "o
 org-mapstruct = {module = "org.mapstruct:mapstruct", version.ref = "org-mapstruct"}
 org-mapstruct-processor = {module = "org.mapstruct:mapstruct-processor", version.ref = "org-mapstruct"}
 javax-xml-bind-jaxb-api = {module = "javax.xml.bind:jaxb-api", version.ref = "javax-xml-bind-jaxb-api"}
+jakarta-validation-api = {module = "jakarta.validation:jakarta.validation-api", version.ref = "jakarta-validation-api"}
 
 
 #Test Depende

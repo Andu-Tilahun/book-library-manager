@@ -35,7 +35,8 @@ public class UserController {
 
     @PostMapping
     public Response createUser(@RequestBody UserDto userDto,
-                                HttpServletRequest request) throws IOException {
+                               HttpServletRequest request) throws IOException {
+        userDto.validate();
         //Call minIo
         iamService.addUser(userDto);
         IAMUser iamUser = iamService.getUserByUserName(userDto.getUserName());
