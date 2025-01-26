@@ -8,6 +8,11 @@ user-service:
   env: local
 
 spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+      enabled: true
   application:
     name: bms-user-service-${user-service.env}
   jpa:
@@ -47,11 +52,6 @@ spring:
         provider:
           keycloak:
             issuer-uri: http://localhost:8080/realms/bms-realm
-  servlet:
-    multipart:
-      enabled: true
-      max-file-size: 10MB
-      max-request-size: 10MB
   main:
     allow-bean-definition-overriding: true
 

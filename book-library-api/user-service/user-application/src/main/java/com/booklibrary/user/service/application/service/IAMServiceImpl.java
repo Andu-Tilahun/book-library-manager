@@ -31,7 +31,9 @@ public class IAMServiceImpl implements IAMService {
 
     @Override
     public void addUser(UserDto userDto) throws IOException {
-        HttpHeaders httpHeaders = buildHeader();
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        httpHeaders.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         httpHeaders.setBearerAuth(getAccessToken());
         IAMUser iamUser = iamUserMapper.mapUserDtoToIAMUser(userDto);
         HttpEntity<IAMUser> entity = new HttpEntity<>(iamUser, httpHeaders);

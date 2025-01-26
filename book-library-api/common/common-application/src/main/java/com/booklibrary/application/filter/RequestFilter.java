@@ -36,6 +36,8 @@ public class RequestFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
+        System.out.println("Content-Type: " + request.getContentType());
+
         String corrId = request.getHeader(HeaderCommonConstants.CORRELATION_ID_HEADER.getValue());
         String csrfToken = request.getHeader(HeaderCommonConstants.REQ_CSRF_TOKEN_HEADER.getValue());
         String userId = pullAuthenticatedUser();

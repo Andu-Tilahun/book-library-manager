@@ -1,6 +1,8 @@
 package com.booklibrary.user.service.application.entity;
 
 import lombok.*;
+import net.minidev.json.JSONObject;
+import org.springframework.util.MultiValueMap;
 
 import java.util.List;
 import java.util.Map;
@@ -15,9 +17,8 @@ public class IAMUser {
     public String email;
     public String username;
     public String firstName;
-    public String middleName;
     public String lastName;
     public Boolean enabled;
     public List<Credentials> credentials;
-    private Map<String, Object> attributes;
+    private JSONObject attributes;
 }

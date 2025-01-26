@@ -24,7 +24,6 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .mvcMatchers(HttpMethod.GET, "/home/**").permitAll()
                         .mvcMatchers("/actuator/**").permitAll()
-                        .mvcMatchers("/user/user/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2

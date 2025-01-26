@@ -3,12 +3,11 @@ package com.booklibrary.user.service.application.mapper;
 import com.booklibrary.user.service.application.entity.Credentials;
 import com.booklibrary.user.service.application.entity.IAMUser;
 import com.booklibrary.user.service.data.dto.UserDto;
+import net.minidev.json.JSONObject;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Component
 public class IAMUserMapper {
@@ -39,12 +38,12 @@ public class IAMUserMapper {
         return credentialsList;
     }
 
-    private Map<String, Object> buildAttributes(UserDto userDto) {
-        Map<String, Object> attributes = new HashMap<>();
+    private JSONObject buildAttributes(UserDto userDto) {
+        JSONObject attributes = new JSONObject();
         attributes.put("middleName", userDto.getMiddleName());
         attributes.put("phoneNumber", userDto.getPhoneNumber());
-        attributes.put("gender", userDto.getGender());
-        attributes.put("profilePicture", userDto.getProfilePicture());
+        attributes.put("gender", userDto.getGender().toString());
+//        attributes.put("profilePicture", userDto.getProfilePicture());
         return attributes;
     }
 

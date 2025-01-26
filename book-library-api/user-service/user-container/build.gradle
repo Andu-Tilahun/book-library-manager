@@ -11,4 +11,6 @@ dependencies {
     implementation libs.org.springframework.boot.spring.boot.starter.web
     implementation libs.org.spring.boot.starter.oauth2.resource.server
     implementation "org.springframework.boot:spring-boot-starter-oauth2-client:2.7.3"
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.14.0'
+
 }
