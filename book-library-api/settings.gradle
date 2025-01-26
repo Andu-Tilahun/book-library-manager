@@ -34,3 +34,6 @@ project(':book-container').projectDir = file('book-service/book-container')
 include ':book-application'
 project(':book-application').projectDir = file('book-service/book-application')
 
+include ':book-open-library'
+project(':book-open-library').projectDir = file('book-service/book-open-library')
+

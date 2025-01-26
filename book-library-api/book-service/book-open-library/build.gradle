@@ -3,11 +3,8 @@ plugins {
 }
 
 dependencies {
-    implementation project(':common-application')
-    implementation project(':book-data')
-    implementation libs.org.springframework.boot.spring.boot.starter.web
+    implementation libs.org.springframework.security.spring.security.web
     implementation libs.com.fasterxml.jackson.core.jackson.annotations
     compileOnly libs.org.projectlombok.lombok
     annotationProcessor libs.org.projectlombok.lombok
-
 }

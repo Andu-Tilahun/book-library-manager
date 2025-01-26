@@ -1,9 +1,13 @@
-
 plugins {
     id 'buildlogic.java-application-conventions'
-//    id 'buildlogic.java-container-conventions'
+    id 'buildlogic.java-container-conventions'
 }
 
 dependencies {
+    implementation project(':common-application')
+    implementation project(':book-application')
+    implementation project(':book-data')
     implementation libs.org.springframework.boot.spring.boot.starter.web
+    implementation libs.org.spring.boot.starter.oauth2.resource.server
+    implementation "org.springframework.boot:spring-boot-starter-oauth2-client:2.7.3"
 }
