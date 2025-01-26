@@ -38,6 +38,7 @@ org-mapstruct = {module = "org.mapstruct:mapstruct", version.ref = "org-mapstruc
 org-mapstruct-processor = {module = "org.mapstruct:mapstruct-processor", version.ref = "org-mapstruct"}
 javax-xml-bind-jaxb-api = {module = "javax.xml.bind:jaxb-api", version.ref = "javax-xml-bind-jaxb-api"}
 jakarta-validation-api = {module = "jakarta.validation:jakarta.validation-api", version.ref = "jakarta-validation-api"}
+mockito-core={module="org.mockito:mockito-core"}
 
 
 #Test Depende
