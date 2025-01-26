@@ -1,0 +1,35 @@
+server:
+  port: 9091
+
+bms:
+  service-name: book-service
+
+book-service:
+  env: local
+
+spring:
+  application:
+    name: bms-book-service-${book-service.env}
+  jpa:
+    open-in-view: true
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bms_db?currentSchema=bms_book_${book-service.env}&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      schema: bms_book_${book-service.env}
+  flyway:
+    url: jdbc:postgresql://localhost:5432/bms_db
+    user: postgres
+    password: admin
+    schemas: bms_book_local
+    locations:
+      - classpath:db/migration/structure
+  main:
+    allow-bean-definition-overriding: true

@@ -11,6 +11,9 @@ dependencies {
     implementation libs.javax.xml.bind.jaxb.api
 //    implementation libs.org.springframework.spring.context
     testImplementation libs.mockito.core
+//    testImplementation 'org.mockito:mockito-junit-jupiter:5.5.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.0'
     testImplementation libs.org.springframework.boot.spring.boot.starter.test
 }
 

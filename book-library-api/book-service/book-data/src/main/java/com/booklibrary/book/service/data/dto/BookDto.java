@@ -3,6 +3,7 @@ package com.booklibrary.book.service.data.dto;
 import com.booklibrary.book.service.data.exception.BookValidationException;
 import lombok.*;
 
+import java.util.Date;
 import java.util.UUID;
 
 @Getter
@@ -16,6 +17,8 @@ public class BookDto {
     private String author;
     private String isbn;
     private String publisher;
+
+    protected Date createdDate;
 
     public void validate() {
         if (this.title == null) {

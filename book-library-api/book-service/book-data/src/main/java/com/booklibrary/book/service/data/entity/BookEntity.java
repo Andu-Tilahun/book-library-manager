@@ -4,6 +4,7 @@ import com.booklibrary.data.entity.AuditableEntity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.UUID;
 
 @Getter
@@ -22,4 +23,8 @@ public class BookEntity extends AuditableEntity {
     @Column(unique = true, nullable = false)
     private String isbn;
     private String publisher;
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
 }
