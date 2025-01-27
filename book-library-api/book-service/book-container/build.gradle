@@ -10,5 +10,9 @@ dependencies {
     implementation project(':book-data')
     implementation libs.org.springframework.boot.spring.boot.starter.web
     implementation libs.org.spring.boot.starter.oauth2.resource.server
+    testImplementation libs.org.springframework.boot.spring.boot.starter.test
+    testImplementation libs.webfluxUi
+    testImplementation libs.springBootWebflux
+    testImplementation libs.reactor
     implementation "org.springframework.boot:spring-boot-starter-oauth2-client:2.7.3"
 }

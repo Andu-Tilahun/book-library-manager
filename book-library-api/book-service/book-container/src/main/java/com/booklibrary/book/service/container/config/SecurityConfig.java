@@ -3,6 +3,7 @@ package com.booklibrary.book.service.container.config;
 import com.booklibrary.application.jwt.JwtAuthConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -24,6 +25,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .mvcMatchers(HttpMethod.GET, "/home/**").permitAll()
                         .mvcMatchers("/actuator/**").permitAll()
+                        .mvcMatchers("/book/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2

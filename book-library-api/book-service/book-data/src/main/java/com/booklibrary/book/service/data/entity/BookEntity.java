@@ -12,7 +12,7 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "books", schema = "bms_book_local")
+@Table(name = "books")
 @Entity
 public class BookEntity extends AuditableEntity {
     @Id
