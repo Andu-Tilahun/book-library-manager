@@ -1,0 +1,163 @@
+<div class="vertical-menu">
+  <div class="navbar-brand-box">
+    <a routerLink="/" class="logo logo-light">
+      <span class="logo-lg">
+        <img
+          src="assets/images/library-logo.png"
+          alt=""
+          height="60"
+          width="60"
+          padding-right="100px"
+        />
+      </span>
+      <span class="logo-sm">
+        <img
+          src="assets/images/library-logo.png"
+          alt=""
+          height="40"
+          width="40"
+        />
+      </span>
+    </a>
+  </div>
+  <button
+    type="button"
+    class="btn btn-sm px-3 font-size-16 header-item vertical-menu-btn"
+    (click)="toggleSideMenu($event)"
+  >
+    <i class="bi bi-list"></i>
+  </button>
+
+  <!-- Display the filtered items -->
+
+  <div class="sidebar-menu-scroll" style="max-height: 100vh">
+    <div id="sidebar-menu" class="sidebar-menu-mask" style="margin-top: 70px">
+      <ul class="list-unstyled" id="side-menu">
+        <ng-container *ngFor="let menuItem of menuItems">
+          <li [class.mm-active]="currentMainMenuId === menuItem.id">
+            <ng-container *ngIf="hasItems(menuItem); else noChildMenuItem">
+              <a
+                href="javascript:void(0);"
+                (click)="toggleCollapse(menuItem)"
+                [attr.aria-expanded]="currentMainMenuId !== menuItem.id"
+                class="is-parent"
+                [class.mm-active]="currentMainMenuId === menuItem.id"
+              >
+                <i [class]="menuItem.icon" class="me-1 nav-icon"></i>
+                <div class="w-100 d-flex justify-content-between">
+                  <span class="menu-item">{{
+                    menuItem.label | translate
+                  }}</span>
+                  <i
+                    *ngIf="!isCondensed"
+                    class="bi"
+                    [class.bi-chevron-down]="currentMainMenuId !== menuItem.id"
+                    [class.bi-chevron-up]="currentMainMenuId === menuItem.id"
+                  >
+                  </i>
+                </div>
+              </a>
+
+              <ul
+                class="sub-menu"
+                [class.mm-show]="currentMainMenuId === menuItem.id"
+                [ngbCollapse]="currentMainMenuId !== menuItem.id"
+              >
+                <!-- Recursively render sub-menu items -->
+                <ng-container
+                  *ngTemplateOutlet="
+                    recursiveMenu;
+                    context: { $implicit: menuItem.subMenuItems }
+                  "
+                ></ng-container>
+              </ul>
+            </ng-container>
+            <ng-template #noChildMenuItem>
+              <a
+                [routerLink]="menuItem.link"
+                class="side-nav-link-ref"
+                [class.active]="currentMainMenuId === menuItem.id"
+                (click)="toggleCollapse(menuItem)"
+                routerLinkActive="active"
+              >
+                <i
+                  *ngIf="menuItem.icon"
+                  [class]="menuItem.icon"
+                  class="me-1 nav-icon"
+                ></i>
+                <span class="menu-item">{{ menuItem.label | translate }}</span>
+              </a>
+            </ng-template>
+          </li>
+        </ng-container>
+
+        <ng-template #recursiveMenu let-subMenuItems>
+          <li *ngFor="let subMenuItem of subMenuItems">
+            <a
+              [routerLink]="subMenuItem.link"
+              class="side-nav-link-ref"
+              [attr.data-parent]="subMenuItem.parentId"
+              routerLinkActive="active-submenu"
+              href="javascript:void(0);"
+              (click)="toggleCollapseSubMenu(subMenuItem)"
+            >
+              {{ subMenuItem.label | translate }}
+              <div
+                *ngIf="
+                  subMenuItem.serviceName !== undefined &&
+                  subMenuItem.status !== undefined
+                "
+              >
+                <ng-container
+
+                >
+                  <ng-container *ngFor="let item of countStatus">
+                    <span
+                      *ngIf="subMenuItem.status === getKey(item)"
+                      class="notification"
+                    >
+                      {{ getItem(item) }}
+                    </span>
+                  </ng-container>
+                </ng-container>
+              </div>
+
+              <div
+                class="sub-menu-sub-menu w-100 d-flex justify-content-end"
+                *ngIf="subMenuItem.subMenuItems"
+              >
+                <i
+                  class="bi"
+                  [class.bi-chevron-down]="!menuState[subMenuItem.id]"
+                  [class.bi-chevron-up]="menuState[subMenuItem.id]"
+                ></i>
+              </div>
+            </a>
+            <!-- Recursively render sub-sub66-menu items -->
+            <ul
+              *ngIf="subMenuItem.subMenuItems"
+              class="sub-menu"
+              [hidden]="currentSelectedMenuId !== subMenuItem.id"
+            >
+              <ng-container
+                *ngTemplateOutlet="
+                  recursiveMenu;
+                  context: { $implicit: subMenuItem.subMenuItems }
+                "
+              ></ng-container>
+            </ul>
+            <!-- Sub-submenu items -->
+            <ul class="sub-menu" [hidden]="!menuState[subMenuItem.id]">
+              <ng-container
+                *ngTemplateOutlet="
+                  recursiveMenu;
+                  context: { $implicit: subMenuItem.subMenuItems }
+                "
+              ></ng-container>
+            </ul>
+          </li>
+        </ng-template>
+      </ul>
+    </div>
+  </div>
+</div>

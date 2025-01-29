@@ -1,0 +1,19 @@
+<ng-template #mainContainer>
+  <ng-content select="[mainContainer]"></ng-content>
+</ng-template>
+
+<div class="row">
+  <main>
+    <ng-container *ngIf="noCardContent; else cardContent">
+      <ng-container *ngTemplateOutlet="mainContainer"></ng-container>
+    </ng-container>
+    <ng-template #cardContent>
+      <div class="card">
+        <div class="card-body">
+          <h5 *ngIf="title" class="card-title mb-4">{{ title }}</h5>
+          <ng-container *ngTemplateOutlet="mainContainer"></ng-container>
+        </div>
+      </div>
+    </ng-template>
+  </main>
+</div>

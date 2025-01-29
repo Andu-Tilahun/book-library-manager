@@ -1,0 +1,22 @@
+$primary: #25695C;
+
+//Fonts
+@import "custom/fonts/fonts";
+
+//Core files
+@import "./node_modules/bootstrap/scss/functions";
+@import "./node_modules/bootstrap/scss/variables";
+@import "variables";
+@import "./node_modules/bootstrap/scss/mixins.scss";
+
+// Icons scss
+@import "icons";
+
+// Structure
+@import "custom/structure/topbar";
+@import "custom/structure/page-head";
+@import "custom/structure/footer";
+@import "custom/structure/vertical";
+
+// Custom Scss
+@import "./custom.scss";

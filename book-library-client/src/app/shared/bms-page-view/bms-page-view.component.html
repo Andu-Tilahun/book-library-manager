@@ -1,0 +1,54 @@
+<ng-template #mainContent>
+  <ng-content select="[mainContent]"></ng-content>
+</ng-template>
+
+<div class="row">
+  <div class="col-12">
+    <div
+      class="page-title-box d-flex align-items-center justify-content-between"
+    >
+      <header *ngIf="pageTitle">
+        <h4 class="mb-0" *ngIf="pageTitle">{{ pageTitle }}</h4>
+      </header>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <main>
+    <ng-container *ngIf="noCardContent; else cardContent">
+      <ng-container *ngTemplateOutlet="mainContent"></ng-container>
+    </ng-container>
+    <ng-template #cardContent>
+      <div class="card">
+        <div class="card-body">
+          <ng-container *ngIf="subTitle">
+            <div *ngIf="subTitle" class="card-header p-0 mb-3">
+              <h5 class="card-title">{{ subTitle }}</h5>
+            </div>
+          </ng-container>
+
+
+          <ng-template [ngTemplateOutlet]="alert"></ng-template>
+
+          <button class="bi bi-arrow-left btn btn-primary "  *ngIf="backButton" (click)="goBack()" > </button>
+          <ng-container   *ngTemplateOutlet="mainContent"></ng-container>
+        </div>
+      </div>
+    </ng-template>
+  </main>
+</div>
+
+<ng-template #alert>
+  <div *ngIf="pageAlert" class="row">
+    <p>
+      <ngb-alert
+        [type]="pageAlert.type"
+        [dismissible]="warningAlertType === pageAlert.type"
+        (closed)="onAlertClose()"
+      >
+        {{ pageAlert.message | translate }}
+      </ngb-alert>
+    </p>
+  </div>
+</ng-template>

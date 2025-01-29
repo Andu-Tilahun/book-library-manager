@@ -1,0 +1,47 @@
+.sub-menu li {
+  list-style: none!important;
+  cursor: pointer;
+}
+#side-menu .side-nav-search .form-input {
+  border: 1px solid #25695C;
+}
+.notification-red {
+  color: red;
+}
+.notification {
+  background-color: rgba(41, 119, 104, 0.9);
+  //background-color: #17a2b8;
+  border: 1px solid rgb(37, 105, 92);
+  color: #ffffff;
+  padding: 5px 10px; /* Adjusted padding for smaller size and space on both sides */
+  border-radius: 30px;
+  font-size: 12px;
+}
+
+.sub-menu a {
+  color: #333; /* Default submenu link color */
+  text-decoration: none;
+}
+
+.sub-menu a.active-submenu {
+  color: #25695c!important; /* Highlight color for active item */
+  background-color: rgba(37, 105, 92, 0.13); /* Background color for active item */
+  font-weight: bold; /* Optionally make the text bold */
+}
+
+.sub-menu li {
+  list-style: none !important;
+  cursor: pointer;
+}
+
+.side-nav-link-ref {
+  color: #6c757d; /* Default color */
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.side-nav-link-ref.active-submenu-item {
+  color: #007bff; /* Active color */
+  font-weight: bold;
+}
+

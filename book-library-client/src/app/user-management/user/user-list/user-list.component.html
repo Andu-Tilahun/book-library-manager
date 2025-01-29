@@ -1,0 +1,25 @@
+<app-bms-page-view
+  [pageTitle]="'PAGES.USER_MANAGEMENT.USER.TITLE' | translate"
+  [pageAlert]="successAlert"
+>
+  <ng-container mainContent>
+    <div class="row d-flex mb-2">
+      <div class="col-12 d-flex justify-content-end">
+        <button class="btn btn-primary" (click)="onNewUserClick()" >
+          {{ 'PAGES.USER_MANAGEMENT.USER.ADD_USER' | translate }}
+        </button>
+      </div>
+    </div>
+    <ng-container *ngIf="users$ | async as users">
+      <bms-data-table
+        [showIndex]="true"
+        [columns]="dataTableColumns"
+        [records]="users"
+        [clickable]="true"
+        (rowClick)="onDetailUserClick($event)"
+      >
+      </bms-data-table>
+    </ng-container>
+  </ng-container>
+</app-bms-page-view>
+

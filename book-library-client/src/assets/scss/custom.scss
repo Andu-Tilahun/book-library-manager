@@ -1,0 +1,274 @@
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $gray-700;
+  font-weight: 500;
+  font-family: $font-family-secondary;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+label {
+  font-weight: 500;
+  margin-bottom: $form-label-margin-bottom;
+}
+
+// Font weight help class
+
+.ff-primary {
+  font-family: $font-family-base;
+}
+
+.ff-secondary {
+  font-family: $font-family-secondary;
+}
+
+// Small
+
+.small,
+small {
+  font-weight: 400;
+}
+
+// blockquote
+
+.blockquote {
+  padding: 10px 20px;
+  border-left: 4px solid $gray-300;
+}
+
+.blockquote-reverse {
+  border-left: 0;
+  border-right: 4px solid $gray-300;
+  text-align: right;
+}
+
+
+// container
+
+.container,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl {
+  @media (min-width: 1200px) {
+    max-width: 1500px;
+    margin-top: 20px;
+  }
+}
+
+// row
+
+.row {
+  >* {
+    position: relative;
+  }
+}
+
+// Icon size
+.icon {
+  position: relative;
+  top: -2px;
+}
+
+.icon-xxs {
+  height: 14px;
+  width: 14px;
+}
+
+.icon-xs {
+  height: 16px;
+  width: 16px;
+}
+
+.icon-sm {
+  height: 20px;
+  width: 20px;
+}
+
+.icon-lg {
+  height: 32px;
+  width: 32px;
+}
+
+.icon-xl {
+  height: 46px;
+  width: 46px;
+}
+
+.icon-xxl {
+  height: 62px;
+  width: 62px;
+}
+
+.sw-3 {
+  stroke-width: 3px;
+}
+
+.sw-1_5 {
+  stroke-width: 1.5px;
+}
+
+.sw-1 {
+  stroke-width: 1px;
+}
+
+// icon color
+@each $color,
+$value in $theme-colors {
+  .icon-dual-#{$color} {
+    color: $value;
+    fill: rgba($value, 0.16);
+  }
+
+  .icon-fill-#{$color} {
+    fill: $value !important;
+  }
+}
+
+
+// Custom Blockquote
+
+.custom-blockpuote {
+  &.blockquote {
+    padding: 20px 20px 20px 30px;
+    border-left: 3px solid;
+    font-size: 16px;
+  }
+}
+
+@each $color,
+$value in $theme-colors {
+  .custom-blockpuote {
+    &.blockquote {
+      &.blockpuote-#{$color} {
+        color: #{$value};
+        border-color: #{$value};
+        background-color: rgba($value, 0.15);
+
+        .blockquote-footer {
+          color: #{$value};
+        }
+      }
+
+      &.blockpuote-outline-#{$color} {
+        border: 1px solid #{$value};
+        border-left: 4px solid #{$value};
+
+        .blockquote-footer {
+          color: #{$value};
+        }
+      }
+    }
+  }
+}
+
+//Bootstrap Dropdown
+.dropdown-toggle::after {
+  display: none;
+}
+
+// Icon
+i {
+  height: 20px !important;
+  width: 20px !important;
+}
+
+// // Side Menu
+#side-menu i {
+  height: 16px !important;
+  width: 16px !important;
+  line-height: 16px;
+  font-size: 1.3rem;
+}
+
+body {
+  * {
+    outline: none;
+  }
+}
+
+thead {
+  background: #25695C;
+  border-radius: 10px 10px 0px 0px;
+}
+
+th {
+  border: 1px solid #fff;
+  border-radius: 4px 4px 0 0;
+  text-align: center;
+  color: #FFFFFF!important;
+  background-color: #25695C!important;
+
+}
+td {
+  text-align: center;
+  background-color: #FFFFFF!important;
+}
+// table
+$table-head-bg:               $gray-100;
+$table-dark-border-color:     tint-color($gray-800, 7.5%);
+
+// Pagination
+.pagination-rounded {
+  .page-link {
+    border-radius: 30px !important;
+    margin: 0 5px;
+    border: none;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    text-align: center;
+    line-height: 32px;
+  }
+}
+
+// Button
+.btn {
+  line-height: 18px;
+}
+
+.btn-secondary {
+  background: #FFFFFF;
+  border: 1px solid $primary-300;
+  border-radius: 5px;
+  color: $primary;
+
+  &:hover {
+    background: $primary-400;
+  }
+}
+
+//for RISK Level
+.red-risk-level {
+  color: red;
+}
+
+.green-risk-level {
+  color: green;
+}
+
+.search-box {
+  box-sizing: border-box;
+  border: 1px solid rgba(37, 105, 92, 0.1);
+  filter: drop-shadow(0px 2px 2px rgba(227, 105, 154, 0.1));
+  border-radius: 10px;
+}

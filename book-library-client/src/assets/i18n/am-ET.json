@@ -1,0 +1,90 @@
+{
+  "APP": {
+    "TITLE": "ጉምሩክ",
+    "GENERAL": {
+      "DISPOSE_ITEM": "አስወግድ",
+      "AMEND_TRAINEE": "ማረም",
+      "DATE": "ቀን",
+      "DELETE": "ሰርዝ",
+      "SAVE": "አስቀምጥ",
+      "SEQ_NO": "ተ.ቁ",
+      "EDIT_ROW": "አዘምን",
+      "DELETE_ROW": "አጥፋ",
+      "FIRST_NAME": "ስም",
+      "MIDDLE_NAME": "የአባት ስም",
+      "LAST_NAME": "የአያት ስም",
+      "COMPANY_NAME": "ስም",
+      "GENDER": "ፆታ",
+      "PHONE_NUMBER": "ስልክ ቁጥር",
+      "PAGINATION_LABEL": "በማሳየት ላይ ከ<b>{{ startIndex }}</b> እስከ <b>{{ endIndex }}</b> ከጠቅላላ <b>{{ totalRecords }}</b> ዳታዎች",
+      "SEARCH": "ፈልግ",
+      "EMPTY_FORM_FIELDS_MESSAGE": "ቢያንስ ቅጹ በአንድ መረጃ መሞላት አለበት"
+    },
+    "SESSION_WARNING_MODAL": {
+      "TITLE": "Warning",
+      "MESSAGE": "You session is going to expire in a minute. If you want to stay logged in press the below button.",
+      "BTN_DISMISS_TXT": "Extend it"
+    }
+  },
+    "PAGES": {
+      "USER_MANAGEMENT": {
+        "ROLE": {
+          "TITLE": "ሚና"
+        },
+        "USER": {
+          "TITLE": "ተጠቃሚ",
+          "USER_TYPE": "የተጠቃሚ ዓይነት",
+          "FIRSTNAME": "ስም",
+          "MIDDLENAME": "የአባት ስም",
+          "LASTNAME": "የአያት ስም",
+          "FULLNAME": "ሙሉ ስም",
+          "GENDER": "ፆታ",
+          "PHONENUMBER": "ስልክ ቁጥር",
+          "PROFILE_PICTURE": "የተጠቃሚ ምስል",
+          "EMAIL": "ኢሜል",
+          "USERNAME": "የተጠቃሚ ስም",
+          "PASSWORD": "የይልፍ ቃል",
+          "BRANCH": "ቅርንጫፍ",
+          "DIVISION": "ዘርፍ",
+          "OFFICE": "ጽፈት ቤት",
+          "CHECKPOINT": "የፍተሻ ኬላ",
+          "WAREHOUSE": "መጋዘን",
+          "DIRECTORATE": "ዳይሬክቶሬት",
+          "UNIT": "የስራ ሂደት",
+          "TEAM": "ቡድን",
+          "REGION": "ክልል",
+          "ORGANIZATION": "ድርጅት",
+          "SIGNATURE": "ፊርማ",
+          "SIGNATURE_STAMP": "የፊርማ ማህተም",
+          "ROLES": "ሚና",
+          "PRIVILEGES": "የተጠቃሚ መብት",
+          "GROUPS": "የተጠቃሚ ቡድን",
+          "ADD_USER": "ተጠቃሚ መዝግብ",
+          "PERSONAL_INFORMATION": "የግል መረጃ",
+          "USER_ACCOUNT_INFORMATION": "የተጠቃሚ መለያ መረጃ",
+          "JOB_POSITION": "የሥራ ቦታ",
+          "USER_TYPE_INFORMATION": "የተጠቃሚ ዓይነት መረጃ",
+          "CREATED_DATE": "የተመዘገበበት ቀን",
+          "CREATED_BY": "የመዘገበ ሰው",
+          "MODIFIED_DATE": "የተዘመነበት ቀን",
+          "MODIFIED_BY": "ያዘመነው ሰው",
+          "MESSAGE": {
+            "SUCCESS": {
+              "CREATE": "ተጠቃሚ በተሳካ ሁኔታ ተመዝግቧል",
+              "UPDATE": "ተጠቃሚ በተሳካ ሁኔታ ዘምኗል",
+              "DELETE": "ተጠቃሚ በተሳካ ሁኔታ ተሰርዟል"
+            }
+          }
+        }
+      }
+    },
+    "MENU_ITEMS": {
+      "USER_MANAGEMENT": {
+        "LABEL": "የተጠቃሚ አስተዳደር",
+        "SUB_MENUS": {
+          "USER": "ተጠቃሚ"
+        }
+      }
+    }
+
+}

@@ -3,4 +3,7 @@
 # Ignore Intellij Idea directory
 .idea
 # Ignore Gradle build output directory
+.vscode
+.angular
+node_modules
 build

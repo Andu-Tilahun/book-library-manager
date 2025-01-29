@@ -1,0 +1,24 @@
+<app-bms-modal
+  [modalTitle]="'PAGES.USER_MANAGEMENT.USER.TITLE' | translate"
+  (modalClosed)="handleModalClose()">
+  <ng-container modalContent>
+    <div class="container">
+      <div class="row">
+        <div class="mb-2">
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <formly-form [form]="form" [model]="model" [fields]="fields">
+            </formly-form>
+            <div class="d-flex justify-content-end mb-2">
+              <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
+                {{ 'APP.GENERAL.SAVE' | translate }}
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</app-bms-modal>
+
+

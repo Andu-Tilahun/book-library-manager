@@ -1,0 +1,73 @@
+{
+  "APP": {
+    "TITLE": "Book management",
+    "GENERAL": {
+      "AMEND_TRAINEE": "Amend",
+      "IN_AMHARIC": "In Amharic",
+      "IN_ENGLISH": "In English",
+      "DATE": "Date",
+      "SAVE": "Save",
+      "SEQ_NO": "Seq No",
+      "EDIT_DELETE": "Edit | Delete",
+      "FIRST_NAME": "First Name",
+      "MIDDLE_NAME": "Middle Name",
+      "LAST_NAME": "Last Name",
+      "COMPANY_NAME": "Company Name",
+      "FULL_NAME": "Full Name",
+      "GENDER": "Gender",
+      "BIRTH_DATE": "Birth Date",
+      "NATIONALITY": "Nationality",
+      "PHONE_NUMBER": "Phone Number",
+      "PAGINATION_LABEL": "Showing <b>{{ startIndex }}</b> to <b>{{ endIndex }}</b> of <b>{{ totalRecords }}</b> records",
+      "SEARCH": "Search",
+      "EMPTY_FORM_FIELDS_MESSAGE": "At least one filed should be filled with data"
+    },
+    "SESSION_WARNING_MODAL": {
+      "TITLE": "Warning",
+      "MESSAGE": "Your session is going to expire in a minute. If you want to stay logged in, press the below button.",
+      "BTN_DISMISS_TXT": "Extend it"
+    }
+  },
+    "PAGES": {
+      "USER_MANAGEMENT": {
+        "ROLE": {
+          "TITLE": "Role"
+        },
+        "USER": {
+          "TITLE": "User",
+          "FIRSTNAME": "First Name",
+          "MIDDLENAME": "Middle Name",
+          "LASTNAME": "Last Name",
+          "FULLNAME": "full Name",
+          "GENDER": "Gender",
+          "PHONENUMBER": "Phone Number",
+          "EMAIL": "Email",
+          "USERNAME": "Username",
+          "PASSWORD": "Password",
+          "ADD_USER": "Add User",
+          "PERSONAL_INFORMATION": "Personal Information",
+          "USER_ACCOUNT_INFORMATION": "User Account Information",
+          "CREATED_DATE": "Created Date",
+          "CREATED_BY": "Created By",
+          "MODIFIED_DATE": "Modified Date",
+          "MODIFIED_BY": "Modified By",
+          "MESSAGE": {
+            "SUCCESS": {
+              "CREATE": "User Created Successfully",
+              "UPDATE": "User Updated Successfully",
+              "DELETE": "User Deleted Successfully"
+            }
+          }
+        }
+      }
+    },
+    "MENU_ITEMS": {
+      "USER_MANAGEMENT": {
+        "LABEL": "User Management",
+        "SUB_MENUS": {
+          "USER": "User"
+        }
+      }
+    }
+
+}

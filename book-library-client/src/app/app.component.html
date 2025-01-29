@@ -1,0 +1,19 @@
+<ng-container *ngIf="isUserLoggedIn$ | async; else notLoggedIn">
+  <div id="layout-wrapper">
+    <app-header (menuToggleButtonClicked)="onToggleMenu()"></app-header>
+    <app-side-nav
+      (menuToggleButtonClicked)="onToggleMenu()"
+      [isCondensed]="isCondensed"></app-side-nav>
+    <div class="main-content">
+      <div class="page-content">
+        <div class="container-fluid">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+ <app-spinner></app-spinner>
+</ng-container>
+<ng-template #notLoggedIn>
+  <router-outlet></router-outlet>
+</ng-template>

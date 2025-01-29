@@ -1,0 +1,32 @@
+<div class="mode d-flex flex-column m-2">
+  <ng-template #modalContent>
+    <ng-content select="[modalContent]"></ng-content>
+  </ng-template>
+
+  <header *ngIf="modalTitle">
+    <div class="d-flex justify-content-between px-2 py-4 border-bottom fw-bold">
+      <span class="h-title">{{ modalTitle | translate }}</span>
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        *ngIf="!hideCloseButton"
+        (click)="closeModal()"
+      ></button>
+    </div>
+    <span
+      class="h6 ms-3"
+      [ngClass]="{
+        'text-success': pageAlert.type === 'success',
+        'text-danger': pageAlert.type === 'danger',
+        'text-warning': pageAlert.type === 'warning'
+      }"
+    >
+      {{ pageAlert.message | translate }}
+    </span>
+  </header>
+
+  <main class="p-2">
+    <ng-container *ngTemplateOutlet="modalContent"></ng-container>
+  </main>
+</div>

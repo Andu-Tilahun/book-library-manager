@@ -1,0 +1,16 @@
+<app-bms-modal
+  [modalTitle]="modalTitle | translate"
+  [hideCloseButton]="hideCloseButton"
+>
+  <ng-container modalContent>
+    <div class="container">
+      <p>{{ modalMessage | translate }}</p>
+
+      <div class="d-flex justify-content-center">
+        <button class="btn btn-primary" (click)="closeModal()">
+          {{ dismissBtnText | translate }}
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</app-bms-modal>

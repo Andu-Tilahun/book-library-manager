@@ -1,0 +1,144 @@
+<ng-container *ngIf="columns">
+  <div class="row">
+    <div class="table-responsive datatables">
+      <table
+        class="table table-striped table-hover align-middle table-nowrap table-check border-tbl"
+      >
+        <thead>
+        <tr>
+          <th *ngIf="showIndex" class="col-1">
+            {{ 'APP.GENERAL.SEQ_NO' | translate }}
+          </th>
+          <th *ngFor="let column of columns">
+            <span> {{ column.header | translate }}</span>
+          </th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <ng-container *ngIf="slicedData$ | async as slicedData; else noData">
+          <tr
+            *ngFor="let data of slicedData; let i = index"
+            [class.clickable]="clickable"
+            (click)="onRowClicked(data)"
+          >
+<!--            <ng-container *ngIf="showCheckBoxColumn">-->
+<!--              <td-->
+<!--                class="col-1 text-center"-->
+<!--                (click)="$event.stopPropagation()"-->
+<!--              >-->
+<!--                <input type="checkbox" (click)="onCheckBoxClicked(data)" />-->
+<!--              </td>-->
+<!--            </ng-container>-->
+            <td *ngIf="showIndex">{{ startIndex + i }}</td>
+            <td *ngFor="let column of columns">
+              <ng-container [ngSwitch]="column.columnType">
+                <ng-container *ngSwitchCase="ColumnType.BUTTON">
+                  <button (click)="column.columnAction?.(data)">
+                      <span
+                        [innerHTML]="column | dataTableCellValuePipe : data"
+                      ></span>
+                  </button>
+                </ng-container>
+                <ng-container *ngSwitchCase="ColumnType.LINK">
+                  <a
+                    href="javascript:void(0)"
+                    (click)="column.columnAction?.(data)"
+                  >
+                      <span
+                        [innerHTML]="column | dataTableCellValuePipe : data"
+                      ></span>
+                  </a>
+                </ng-container>
+                <ng-container *ngSwitchCase="ColumnType.TEMPLATE">
+                  <span
+                  [innerHTML]="column | dataTableCellValuePipe : data"
+                ></span>
+                </ng-container>
+                <ng-container *ngSwitchCase="ColumnType.CHECK_BOX">
+                      <input
+                        type="checkbox"
+                        class="form-check-input"
+                        (change)="column.columnAction?.(data)"
+                        [checked]="column?.defaultValue || false"
+                        [disabled]="column?.disabled"
+                     />
+                </ng-container>
+                <ng-container *ngSwitchDefault>
+                    <span
+                      [innerHTML]="column | dataTableCellValuePipe : data"
+                    ></span>
+                </ng-container>
+              </ng-container>
+            </td>
+
+          </tr>
+        </ng-container>
+        <ng-template #noData>
+          <ng-container *ngIf="noDataMessage; else emptyRow">
+            <tr><td class="text-start" [colSpan]="noOfColumns">{{noDataMessage }}</td></tr>
+          </ng-container>
+          <ng-template #emptyRow>
+            <tr *ngFor="let r of emptyRows">
+              <td *ngIf="showIndex" class="cms-td"></td>
+              <ng-container *ngFor="let column of columns">
+                <td class="cms-td"></td>
+              </ng-container>
+            </tr>
+          </ng-template>
+
+        </ng-template>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <ng-container *ngIf="showPagination && totalRecords > 0">
+    <div class="row justify-content-md-between align-items-md-center mt-2">
+      <div class="col-sm-12 col-md-5">
+        <div
+          class="dataTables_info mb-2"
+          id="tickets-table_info"
+          role="status"
+          aria-live="polite"
+        >
+          <span
+            [innerHTML]="
+              'APP.GENERAL.PAGINATION_LABEL'
+                | translate
+                  : {
+                      startIndex: startIndex,
+                      endIndex: endIndex,
+                      totalRecords: totalRecords
+                    }
+            "
+          ></span>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-5">
+        <div class="text-md-right float-md-end pagination-rounded">
+          <ngb-pagination
+            [collectionSize]="(total$ | async)!"
+            [(page)]="page"
+            [pageSize]="pageSize"
+            [maxSize]="5"
+            [rotate]="true"
+          >
+            <ng-template ngbPaginationPrevious>
+              <span aria-hidden="true">
+                <i class="bi bi-chevron-left"></i>
+              </span>
+            </ng-template>
+            <ng-template ngbPaginationNext>
+              <span aria-hidden="true">
+                <i class="bi bi-chevron-right"></i>
+              </span>
+            </ng-template>
+          </ngb-pagination>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>
+
