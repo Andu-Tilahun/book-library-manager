@@ -5,7 +5,7 @@ plugins {
 	id "org.sonarqube" version "3.3"
 }
 
-group = 'et.gov.cms'
+group = 'com.booklibrary'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 

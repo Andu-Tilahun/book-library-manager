@@ -1,6 +1,6 @@
 FROM openjdk:17-jdk-slim
 
-ARG APP_NAME="cms-api-gateway"
+ARG APP_NAME="bms-api-gateway"
 ARG APP_VERSION="0.0.1"
 ARG JAR_FILE="/build/libs/${APP_NAME}-${APP_VERSION}-SNAPSHOT.jar"
 
