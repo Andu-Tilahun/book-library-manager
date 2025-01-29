@@ -90,6 +90,35 @@ public class IAMServiceImpl implements IAMService {
         return null;
     }
 
+    public ResponseEntity<Map> generateToken(String grantType, String clientId, String clientSecret) {
+        String url = iamConfig.getUsersEndpoint();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+
+        MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
+        map.add("grant_type", grantType);
+        map.add("client_id", clientId);
+        map.add("client_secret", clientSecret);
+
+        HttpEntity<MultiValueMap<String, String>> entity = new HttpEntity<>(map, headers);
+
+        ResponseEntity<Map> response = restTemplate.exchange(
+                url,
+                HttpMethod.POST,
+                entity,
+                Map.class,
+                iamConfig.getRealm()
+        );
+
+        if (response.getStatusCode() == HttpStatus.OK) {
+            return response;
+        } else {
+            throw new RuntimeException("Failed to get access token");
+        }
+    }
+
     private String getAccessToken() {
         String url = iamConfig.getAccessTokenEndpoint();
         MultiValueMap<String, String> map = new LinkedMultiValueMap<>();

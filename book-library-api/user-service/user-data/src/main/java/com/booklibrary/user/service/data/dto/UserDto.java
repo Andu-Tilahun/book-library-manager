@@ -1,6 +1,7 @@
 package com.booklibrary.user.service.data.dto;
 
 import com.booklibrary.user.service.data.entity.Gender;
+import com.booklibrary.user.service.data.entity.Role;
 import com.booklibrary.user.service.data.exception.UserValidationException;
 import lombok.*;
 
@@ -18,6 +19,8 @@ public class UserDto {
     private String middleName;
     private String lastName;
     private Gender gender;
+
+    private Role role;
     private String phoneNumber;
     private String profilePicture;
     private String userName;
@@ -33,6 +36,9 @@ public class UserDto {
         }
         if (gender == null) {
             throw new UserValidationException("Gender is required");
+        }
+        if (role == null) {
+            throw new UserValidationException("Role is required");
         }
         if (phoneNumber == null || phoneNumber.trim().isEmpty()) {
             throw new UserValidationException("Phone number is required");

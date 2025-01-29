@@ -43,6 +43,7 @@ public class IAMUserMapper {
         attributes.put("middleName", userDto.getMiddleName());
         attributes.put("phoneNumber", userDto.getPhoneNumber());
         attributes.put("gender", userDto.getGender().toString());
+        attributes.put("role", userDto.getRole().toString());
 //        attributes.put("profilePicture", userDto.getProfilePicture());
         return attributes;
     }

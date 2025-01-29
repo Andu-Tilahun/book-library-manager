@@ -3,13 +3,13 @@ package com.booklibrary.user.service.data.impl;
 import com.booklibrary.user.service.data.dto.UserDto;
 import com.booklibrary.user.service.data.entity.UserEntity;
 import com.booklibrary.user.service.data.exception.UserDomainException;
-import com.booklibrary.user.service.data.exception.UserNotFoundException;
 import com.booklibrary.user.service.data.mapper.UserMapper;
 import com.booklibrary.user.service.data.ports.input.UserService;
 import com.booklibrary.user.service.data.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -56,9 +56,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto findById(String id) {
+    public Optional<UserDto> findById(String id) {
         return this.userRepository.findById(UUID.fromString(id))
-                .map(userMapper::mapUserEntityToUserDto)
-                .orElseThrow(() -> new UserNotFoundException(String.format("No user found with the provided ID: %s", id)));
+                .map(userMapper::mapUserEntityToUserDto);
     }
 }

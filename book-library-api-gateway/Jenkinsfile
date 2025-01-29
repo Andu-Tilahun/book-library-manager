@@ -1,0 +1,113 @@
+
+    def cmsApiImage = "cms-api-gateway:1.0-SNAPSHOT"
+    def cmsApiService = "cms-api-gateway"
+     pipeline {
+     agent {
+        label 'test-slave'
+        }
+    environment {
+		 kshelm=credentials('k8s-helm')
+        dockerhub=credentials('cms-dockerhub')
+    }
+    tools{
+        gradle 'Gradle 7.5'
+         }
+        stages{
+            stage('Git Checkout'){
+                steps{
+                    checkout([$class: 'GitSCM', branches: [[name: '*/dev-profile']], extensions: [], userRemoteConfigs: [[credentialsId: 'fc94cbe7-c782-4f9a-9af0-5911871dc48f', url: 'git@192.168.1.77:customs/cms-api-gateway.git']]])
+                        sh 'gradle -v'
+                }
+              }
+            stage('CMS-API-Gatway-Build') {
+                steps {
+                    sh 'sudo chown -R jenkins:jenkins /home/jenkins/workspace'
+                    sh 'gradle clean assemble'
+
+                }
+            }
+
+            // stage('CMS-API-Gatway-Test'){
+            //     steps{
+            //         // sh 'gradle bootrun'
+            //         sh 'gradle test'
+            //     }
+            // }
+
+            stage('SonarQube Analysis') {
+                steps {
+                    echo 'api-gateway code analysis with SonarQube ...'
+
+                    withSonarQubeEnv('SonarQube-9.0.1') {
+                    sh "gradle sonarqube"
+                    }
+                }
+            }
+
+           stage('API-DockerImage') {
+                steps {
+                    echo 'Build docker images for api-gateway ...'
+
+                    dir('/home/jenkins/workspace/customs-management-system/infrastructure/docker-compose') {
+                        sh 'pwd'
+                        sh 'sudo chmod 777 /var/run/docker.sock'
+
+                        // sh 'docker-compose -f common.yml -f cms-api-gateway.yml up -d cms-keycloak'
+                        // sh 'docker-compose -f common.yml -f cms-api-gateway.yml up -d  cms-redis'
+
+                        sh 'docker rm -f cms-api-gateway '
+                        sh 'docker rmi -f cmsproject/cms-api-gateway-service:1.0-SNAPSHOT'
+
+                        sh 'docker-compose -f common.yml -f cms-api-gateway.yml up -d cms-api-gateway'
+
+                    }
+                }
+           }
+
+         stage('Login to Dockerhub') {
+          steps {
+              sh 'echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin'
+
+          }
+
+        }
+
+           stage('Push to Dockerhub') {
+
+              steps {
+                  sh 'docker push cmsproject/cms-api-gateway-service:1.0-SNAPSHOT'
+
+
+                }
+            }
+
+          stage('Deploy on k8s') {
+              agent {
+                label 'prod-slave'
+
+                }
+                steps {
+                    sh 'helm upgrade cms cms-helm/'
+                    sh 'kubectl get pods'
+
+                }
+            }
+        }
+
+        post {
+            success {
+                echo 'Pipeline Success!'
+
+            }
+            failure {
+                echo 'Pipeline Failed!'
+                slackSend (
+                    message: 'Hi team, cms-api-gateway pipeline Failed. Please investigate the issue.',
+                    color: 'danger'
+                )
+
+            }
+
+        }
+
+    }

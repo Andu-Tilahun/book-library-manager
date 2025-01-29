@@ -3,6 +3,7 @@ server:
 
 bms:
   allowed-origins: http://localhost:4200
+  #post-logout-redirect-uri: http://localhost:4200/sign-out-callback
   post-logout-redirect-uris: http://localhost:4200/sign-out-callback
 
 spring:
@@ -37,17 +38,16 @@ spring:
         registration:
           bms-internal-keycloak:
             client-id: bms-web-client
-            client-secret: 9qmV3THGmdQmvnL3ebFeyh3OFLQ0iXE
+            client-secret: 9qmV3THGmBdQmvnL3ebFeyh3OFLQ0iXE
             redirect-uri: http://localhost:4200/sign-in-callback
             scope: openid
         provider:
           bms-internal-keycloak:
             issuer-uri: http://localhost:8080/realms/bms-realm
-
 iam:
   keycloak:
     bms-web-client-id: bms-service-client
-    bms-web-client-secret: Zu30lk1VhqojID48MQkdl4hgqAvYpHgW
+    bms-web-client-secret: fcYZkJEhPAFheiM3MPkPU2P5HFyyhAHO
     endpoints:
       token: http://localhost:8080/realms/bms-realm/protocol/openid-connect/token
       session-url: http://localhost:8080/admin/realms/bms-realm/sessions/

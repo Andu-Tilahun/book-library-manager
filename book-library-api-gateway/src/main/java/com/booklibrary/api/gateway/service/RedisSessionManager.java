@@ -34,7 +34,7 @@ public class RedisSessionManager {
     }
 
     public void removeWebSession(String webSessionId) {
-        String sessionKey = "bms:gateway:sessions:" + webSessionId;
+        String sessionKey = "cms:gateway:sessions:" + webSessionId;
         Mono.fromRunnable(() -> {
             redisTemplate.delete(sessionKey);  // This deletes the session key for the user
             log.info("Old session for user  invalidated (session ID: {})", sessionKey);

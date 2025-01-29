@@ -1,4 +1,4 @@
-package com.booklibrary.api.gateway;
+package et.gov.cms.api.gateway;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

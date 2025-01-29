@@ -1,0 +1,8 @@
+version: "3.7"
+
+services:
+
+  cms-api-gateway:   
+    build: .
+    image: cmsproject/cms-api-gateway-service:${IMAGE_VERSION}
+

@@ -21,6 +21,8 @@ public class UserEntity extends AuditableEntity {
     private String lastName;
     @Enumerated(EnumType.STRING)
     private Gender gender;
+    @Enumerated(EnumType.STRING)
+    private Role role;
     @Column(unique = true, nullable = false)
     private String phoneNumber;
     private String profilePicture;

@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.security.SecureRandom;
+import java.util.List;
 import java.util.UUID;
 
 @Slf4j
@@ -57,8 +58,12 @@ public class UserController {
     }
 
     @GetMapping
-    public String testUser() {
-        return "working...";
+    public Response getAllUsers(HttpServletRequest request) {
+        List<UserDto> result = userService.findAllUsers();
+        return Response.builder()
+                .data(result)
+                .correlationId(CorrelationIdGenerator.getCorrelationId(request))
+                .build();
     }
 
     @PostMapping("/uploadImage")

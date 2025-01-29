@@ -10,6 +10,6 @@ CREATE TABLE users (
                        profile_picture VARCHAR(250),
                        user_name VARCHAR(250) NOT NULL UNIQUE,
                        email VARCHAR(250) NOT NULL UNIQUE,
-                       password VARCHAR(250) NOT NULL,
+                       password VARCHAR(250),
                        CONSTRAINT users_pkey PRIMARY KEY (id)
 );

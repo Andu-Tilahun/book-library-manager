@@ -6,16 +6,20 @@ import com.booklibrary.user.service.application.entity.IAMUser;
 import com.booklibrary.user.service.application.service.IAMService;
 import com.booklibrary.user.service.data.dto.UserDto;
 import com.booklibrary.user.service.data.entity.Gender;
+import com.booklibrary.user.service.data.entity.Role;
 import com.booklibrary.user.service.data.ports.input.UserService;
 import lombok.extern.slf4j.Slf4j;
 import net.minidev.json.JSONObject;
+import org.springframework.http.ResponseEntity;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -27,6 +31,8 @@ public class AuthController {
     public static final String MIDDLE_NAME = "middleName";
     public static final String PHONE_NUMBER = "phoneNumber";
     public static final String GENDER = "gender";
+
+    public static final String ROLE = "role";
 
     private final UserService userService;
     private final IAMService iamService;
@@ -45,13 +51,20 @@ public class AuthController {
         return response;
     }
 
+    @GetMapping("auth/token")
+    public ResponseEntity<Map> generateToken(@RequestParam("grant_type") String grantType,
+                                             @RequestParam("client_id") String clientId,
+                                             @RequestParam("client_secret") String clientSecret) {
+        return iamService.generateToken(grantType, clientId, clientSecret);
+    }
+
     private AuthInitResponse buildUserDetail() {
         if (StringUtils.hasText(requestBean.getUserId())) {
             String csrfToken = requestBean.getCsrfToken();
 
             UserDto userDto = null;
             UUID userId = UUID.fromString(requestBean.getUserId());
-            Optional<UserDto> optionalUser = Optional.of(userService.findById(String.valueOf(userId)));
+            Optional<UserDto> optionalUser = userService.findById(String.valueOf(userId));
 
             if (optionalUser.isEmpty()) {
                 userDto = new UserDto();
@@ -81,6 +94,12 @@ public class AuthController {
                         ArrayList genderMap = (ArrayList) attributes.get(GENDER);
                         if (!CollectionUtils.isEmpty(genderMap)) {
                             userDto.setGender(Gender.valueOf(genderMap.get(0).toString()));
+                        }
+                    }
+                    if (attributes.containsKey(ROLE)) {
+                        ArrayList roleMap = (ArrayList) attributes.get(ROLE);
+                        if (!CollectionUtils.isEmpty(roleMap)) {
+                            userDto.setRole(Role.valueOf(roleMap.get(0).toString()));
                         }
                     }
 

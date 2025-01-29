@@ -1,19 +1,21 @@
 package com.booklibrary.api.gateway.config;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.core.oidc.OidcIdToken;
 import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.client.RestTemplate;
+
+import org.springframework.http.*;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.Map;
+
 
 @Service
 @Slf4j
@@ -37,6 +39,8 @@ public class SecurityHelper {
         this.restTemplate = restTemplate;
     }
 
+
+    //Get Client Id
     public void logout(String sessionId) {
 
         String accessToken = getAccessToken();
@@ -87,6 +91,7 @@ public class SecurityHelper {
             throw new RuntimeException("Failed to get access token");
         }
     }
+
 
     public String getOidcSessionId(Authentication authentication) {
 
