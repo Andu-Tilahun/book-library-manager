@@ -8,6 +8,9 @@ import com.booklibrary.book.service.data.repository.BookRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 @Service
 @Slf4j
@@ -32,5 +35,13 @@ public class BookServiceImpl implements BookService {
 
         BookEntity bookEntity = bookRepository.save(bookMapper.mapBookDtoToBookEntity(bookDto));
         return bookMapper.mapBookEntityToBookDto(bookEntity);
+    }
+
+    @Override
+    public List<BookDto> fetchAllBooks() {
+        return this.bookRepository.findAll()
+                .stream()
+                .map(this.bookMapper::mapBookEntityToBookDto)
+                .collect(Collectors.toList());
     }
 }

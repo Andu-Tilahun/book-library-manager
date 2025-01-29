@@ -22,12 +22,12 @@ public class OpenLibraryResponseMapper {
                     book.setAuthor(doc.getAuthor_name().get(0));
                 }
 
-                if (doc.getIsbn() != null && !doc.getIsbn().isEmpty()) {
-                    book.setIsbn(doc.getIsbn().get(0));
+                if (doc.getIa() != null && !doc.getIa().isEmpty()) {
+                    book.setIsbn(doc.getIa().get(0));
                 }
 
-                if (doc.getPublisher() != null && !doc.getPublisher().isEmpty()) {
-                    book.setPublisher(doc.getPublisher().get(0));
+                if (doc.getFirst_publish_year() != null && !doc.getFirst_publish_year().isEmpty()) {
+                    book.setPublisher(doc.getFirst_publish_year());
                 }
 
                 books.add(book);

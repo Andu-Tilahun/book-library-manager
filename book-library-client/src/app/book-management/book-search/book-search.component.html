@@ -1,0 +1,24 @@
+<app-bms-page-view
+  [pageTitle]="'PAGES.BOOK_MANAGEMENT.BOOK.TITLE' | translate"
+>
+  <ng-container mainContent>
+    <div class="container">
+      <h2>Book Search</h2>
+
+      <div class="search-form">
+        <input type="text" [(ngModel)]="title" placeholder="Enter Title" />
+        <input type="text" [(ngModel)]="author" placeholder="Enter Author" />
+        <input type="text" [(ngModel)]="isbn" placeholder="Enter ISBN" />
+        <button (click)="searchBooks()">Search</button>
+      </div>
+
+      <label for="bookSelect">Select Book:</label>
+      <select id="bookSelect">
+        <option *ngFor="let book of books" [value]="book.isbn">
+          {{ book.title }} by {{ book.author }} (ISBN: {{ book.isbn }})
+        </option>
+      </select>
+    </div>
+
+    </ng-container>
+</app-bms-page-view>

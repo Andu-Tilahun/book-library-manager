@@ -21,6 +21,13 @@ const routes: Routes = [
   },
 
   {
+    path: 'book-management',
+    loadChildren: () =>
+      import('./book-management/book-management.module').then(m => m.BookManagementModule),
+    canActivate: [AuthGuard],
+  },
+
+  {
     path: 'sign-in-callback',
     component: SignInRedirectCallbackComponent,
   },

@@ -59,6 +59,16 @@
             }
           }
         }
+      },
+      "BOOK_MANAGEMENT": {
+        "BOOK": {
+          "TITLE": "Book",
+          "TITLE_BOOK": "Title",
+          "AUTHOR": "Author",
+          "ISBN": "Isbn",
+          "PUBLISHER": "publisher",
+          "ADD_BOOK": "Add Book"
+        }
       }
     },
     "MENU_ITEMS": {
@@ -66,6 +76,12 @@
         "LABEL": "User Management",
         "SUB_MENUS": {
           "USER": "User"
+        }
+      },
+      "BOOK_MANAGEMENT": {
+        "LABEL": "Book Management",
+        "SUB_MENUS": {
+          "BOOK": "Book"
         }
       }
     }

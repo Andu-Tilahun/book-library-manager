@@ -15,4 +15,6 @@ export const Endpoints = {
   USER_AUTHORIZATION: 'oauth2/authorization/bms-internal-keycloak',
   LOGOUT: 'logout',
   USER_ENDPOINT: 'user/user',
+  BOOK_ENDPOINT: 'book/',
+  OPEN_LIBRARY_ENDPOINT:'openLibrary/'
 };

@@ -137,7 +137,6 @@ export class AuthService {
   }
 
   private redirectToLogin() {
-    alert('ss')
     window.open(environment.baseUrl + Endpoints.USER_AUTHORIZATION, '_self');
   }
 

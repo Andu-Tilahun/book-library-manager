@@ -5,13 +5,11 @@ import com.booklibrary.application.util.CorrelationIdGenerator;
 import com.booklibrary.book.service.data.dto.BookDto;
 import com.booklibrary.book.service.data.service.BookService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -33,6 +31,15 @@ public class BookController {
                 .data(result)
                 .correlationId(CorrelationIdGenerator.getCorrelationId(request))
                 .message("Book Created Successfully")
+                .build();
+    }
+
+    @GetMapping
+    public Response getAllBooks(HttpServletRequest request) {
+        List<BookDto> result = bookService.fetchAllBooks();
+        return Response.builder()
+                .data(result)
+                .correlationId(CorrelationIdGenerator.getCorrelationId(request))
                 .build();
     }
 }

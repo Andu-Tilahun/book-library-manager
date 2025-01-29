@@ -14,8 +14,8 @@ public class OpenLibraryResponse {
     public static class Doc {
         private String title;
         private List<String> author_name;
-        private List<String> isbn;
-        private List<String> publisher;
+        private List<String> ia;
+        private String first_publish_year;;
 
         public String getTitle() {
             return title;
@@ -33,20 +33,20 @@ public class OpenLibraryResponse {
             this.author_name = author_name;
         }
 
-        public List<String> getIsbn() {
-            return isbn;
+        public List<String> getIa() {
+            return ia;
         }
 
-        public void setIsbn(List<String> isbn) {
-            this.isbn = isbn;
+        public void setIa(List<String> ia) {
+            this.ia = ia;
         }
 
-        public List<String> getPublisher() {
-            return publisher;
+        public String getFirst_publish_year() {
+            return first_publish_year;
         }
 
-        public void setPublisher(List<String> publisher) {
-            this.publisher = publisher;
+        public void setFirst_publish_year(String first_publish_year) {
+            this.first_publish_year = first_publish_year;
         }
     }
 }

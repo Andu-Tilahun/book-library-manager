@@ -11,8 +11,6 @@ import {ApiResponse} from "@model/response.model";
 
 export class UserService {
 
-  roles: Role[] = [];
-
   constructor(private httpService: HttpService) {
   }
 
