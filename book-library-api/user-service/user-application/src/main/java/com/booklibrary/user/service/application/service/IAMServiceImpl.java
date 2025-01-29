@@ -67,6 +67,29 @@ public class IAMServiceImpl implements IAMService {
         return null;
     }
 
+    @Override
+    public IAMUser getUserByUserId(String userId) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(getAccessToken());
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+
+        String url = iamConfig.getUsersEndpoint() + "/" + userId;
+        ResponseEntity<IAMUser> response = restTemplate.exchange(
+                url,
+                HttpMethod.GET,
+                entity,
+                IAMUser.class,
+                iamConfig.getRealm(),
+                userId
+        );
+
+        if (response.getStatusCode() == HttpStatus.OK) {
+            IAMUser responseBody = response.getBody();
+            return responseBody;
+        }
+        return null;
+    }
+
     private String getAccessToken() {
         String url = iamConfig.getAccessTokenEndpoint();
         MultiValueMap<String, String> map = new LinkedMultiValueMap<>();

@@ -9,4 +9,6 @@ public interface IAMService {
     void addUser(UserDto userDto) throws IOException;
 
     IAMUser getUserByUserName(String userName);
+
+     IAMUser getUserByUserId(String userId);
 }
