@@ -35,18 +35,28 @@ spring:
     oauth2:
       client:
         registration:
-          cms-internal-keycloak:
+          bms-internal-keycloak:
             client-id: bms-web-client
             client-secret: 9qmV3THGmdQmvnL3ebFeyh3OFLQ0iXE
             redirect-uri: http://localhost:4200/sign-in-callback
             scope: openid
         provider:
-          cms-internal-keycloak:
+          bms-internal-keycloak:
             issuer-uri: http://localhost:8080/realms/bms-realm
+
+iam:
+  keycloak:
+    bms-web-client-id: bms-service-client
+    bms-web-client-secret: Zu30lk1VhqojID48MQkdl4hgqAvYpHgW
+    endpoints:
+      token: http://localhost:8080/realms/bms-realm/protocol/openid-connect/token
+      session-url: http://localhost:8080/admin/realms/bms-realm/sessions/
+
+
 logging:
   level:
     root: warn
     org.springframework: debug
-    et.gov.cms: debug
+    et.gov.bms: debug
 
 

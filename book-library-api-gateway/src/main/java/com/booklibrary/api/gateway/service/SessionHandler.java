@@ -7,6 +7,7 @@ import org.springframework.security.web.server.WebFilterExchange;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+
 @Service
 @Slf4j
 public class SessionHandler {
@@ -26,6 +27,7 @@ public class SessionHandler {
     public Mono<Void> handleAuthenticationSession(WebFilterExchange webFilterExchange, Authentication authentication) {
         String username = authentication.getName();
         String oidcSessionId = securityHelper.getOidcSessionId(authentication);
+        this.invalidateOldSession(username).subscribe();
         return webFilterExchange.getExchange().getSession()
                 .flatMap(webSession -> {
                     String sessionId = webSession.getId();
@@ -33,6 +35,18 @@ public class SessionHandler {
                     updateUserSession(username, userSession);
                     return Mono.empty();
                 });
+    }
+
+    public Mono<Void> invalidateOldSession(String userName) {
+
+        return redisSessionManager.getMonoSession(userName)
+                .flatMap(userSession -> {
+                    this.terminateUserSession(userName, userSession);
+
+                    return Mono.empty(); // If session ID doesn't match, return an empty Mono
+                });
+        // If no user session is found, return an empty Mono
+
     }
 
     public Mono<Void> invalidateOldSession(String userName, WebFilterExchange exchange) {
@@ -74,7 +88,7 @@ public class SessionHandler {
     }
 
     private void terminateUserSession(String userId, UserSession oldSession) {
-        //securityHelper.logout(oldSession.getKeycloakSessionId());
+        securityHelper.logout(oldSession.getKeycloakSessionId());
 //        redisSessionManager.removeWebSession(oldSession.getWebSessionId());
         redisSessionManager.removeSession(userId).subscribe();
     }
