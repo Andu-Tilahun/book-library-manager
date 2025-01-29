@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
 
-  cms-api-gateway:   
+  bms-api-gateway:
     build: .
-    image: cmsproject/cms-api-gateway-service:${IMAGE_VERSION}
+    image: bmsproject/bms-api-gateway-service:${IMAGE_VERSION}
 
