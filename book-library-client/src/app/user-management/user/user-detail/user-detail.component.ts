@@ -1,7 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { User } from '../models/user.model';
-import { SafeResourceUrl } from '@angular/platform-browser';
-import { Observable } from 'rxjs';
+import {Component, Input} from '@angular/core';
+import {User} from '../models/user.model';
 
 @Component({
   selector: 'app-user-detail',
@@ -9,16 +7,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./user-detail.component.scss'],
 })
 export class UserDetailComponent {
-@Input()
-user: User = {} as User;
-
-@Input()
-userPicture$: Observable<SafeResourceUrl> | undefined;
-
-@Input()
-userSignature$: Observable<SafeResourceUrl> | undefined;
-
-@Input()
-userSignatureStamp$: Observable<SafeResourceUrl> | undefined;
+  @Input()
+  user: User = {} as User;
 
 }

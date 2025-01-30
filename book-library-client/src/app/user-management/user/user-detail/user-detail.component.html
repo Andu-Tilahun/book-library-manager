@@ -1,19 +1,6 @@
 <ng-container>
   <div>
     <div class="form-group row">
-      <label for="profilePicture" class="col-sm-4 col-form-label">{{
-        'PAGES.USER_MANAGEMENT.USER.PROFILE_PICTURE' | translate
-      }}</label>
-      <div class="col-sm-7">
-        <img
-          [src]="userPicture$ | async"
-          id="profilePicture"
-          class="img-thumbnail"
-          alt="No Profile Picture"
-        />
-      </div>
-    </div>
-    <div class="form-group row">
       <label for="firstName" class="col-sm-4 col-form-label">{{
         'PAGES.USER_MANAGEMENT.USER.FIRSTNAME' | translate
       }}</label>
@@ -114,32 +101,6 @@
       </div>
     </div>
 
-    <div class="form-group row">
-      <label for="signature" class="col-sm-4 col-form-label">{{
-        'PAGES.USER_MANAGEMENT.USER.SIGNATURE' | translate
-      }}</label>
-      <div class="col-sm-7">
-        <img
-          [src]="userSignature$ | async"
-          id="signature"
-          class="img-thumbnail"
-          alt="No Signature"
-        />
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="signatureStamp" class="col-sm-4 col-form-label">{{
-        'PAGES.USER_MANAGEMENT.USER.SIGNATURE_STAMP' | translate
-      }}</label>
-      <div class="col-sm-7">
-        <img
-          [src]="userSignatureStamp$ | async"
-          id="signatureStamp"
-          class="img-thumbnail"
-          alt="No Signature Stamp"
-        />
-      </div>
-    </div>
     <div class="form-group row">
       <label for="createdDate" class="col-sm-4 col-form-label">{{
         'PAGES.USER_MANAGEMENT.USER.CREATED_DATE' | translate

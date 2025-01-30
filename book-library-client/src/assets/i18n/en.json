@@ -62,12 +62,19 @@
       },
       "BOOK_MANAGEMENT": {
         "BOOK": {
+          "INFO": "Book Information",
           "TITLE": "Book",
           "TITLE_BOOK": "Title",
           "AUTHOR": "Author",
           "ISBN": "Isbn",
           "PUBLISHER": "publisher",
-          "ADD_BOOK": "Add Book"
+          "ADD_BOOK": "Add Book",
+          "SEARCH": {
+            "TITLE": "Title",
+            "ENTER_TITLE": "Enter title",
+            "ENTER_AUTHOR": "Enter author",
+            "ENTER_ISBN": "Enter isbn"
+          }
         }
       }
     },

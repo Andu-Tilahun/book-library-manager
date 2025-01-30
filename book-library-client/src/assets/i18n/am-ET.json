@@ -76,7 +76,25 @@
             }
           }
         }
+      },
+      "BOOK_MANAGEMENT": {
+        "BOOK": {
+          "INFO": "የመጽሐፍ መረጃ",
+          "TITLE": "መጽሐፍ",
+          "TITLE_BOOK": "ርዕስ",
+          "AUTHOR": "ደራሲ",
+          "ISBN": "አይ.ኤስ.ቢ.ኤን",
+          "PUBLISHER": "አሳታሚ",
+          "ADD_BOOK": "መጽሐፍ ያስገቡ",
+          "SEARCH": {
+            "TITLE": "ርዕስ",
+            "ENTER_TITLE": "ርዕስ ያስገቡ",
+            "ENTER_AUTHOR": "ደራሲ ያስገቡ",
+            "ENTER_ISBN": "አይ.ኤስ.ቢ.ኤን ያስገቡ"
+          }
+        }
       }
+
     },
     "MENU_ITEMS": {
       "USER_MANAGEMENT": {
@@ -84,7 +102,14 @@
         "SUB_MENUS": {
           "USER": "ተጠቃሚ"
         }
+      },
+      "BOOK_MANAGEMENT": {
+        "LABEL": "የመጽሐፍ አስተዳደር",
+        "SUB_MENUS": {
+          "BOOK": "መጽሐፍ"
+        }
       }
+
     }
 
 }

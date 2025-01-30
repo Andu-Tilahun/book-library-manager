@@ -1,1 +1,17 @@
-<app-book-search></app-book-search>
+<app-bms-page-view
+  [pageTitle]="'PAGES.BOOK_MANAGEMENT.BOOK.TITLE' | translate"
+>
+  <ng-container mainContent>
+<app-book-search (bookEvent)="handleBookEvent($event)"></app-book-search>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <formly-form [form]="form" [model]="book" [fields]="fields">
+  </formly-form>
+  <div class="d-flex justify-content-end mb-2">
+    <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
+      {{ 'APP.GENERAL.SAVE' | translate }}
+    </button>
+  </div>
+
+</form>
+  </ng-container>
+</app-bms-page-view>
