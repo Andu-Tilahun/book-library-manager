@@ -5,7 +5,7 @@ import com.booklibrary.application.util.CorrelationIdGenerator;
 import com.booklibrary.user.service.application.entity.IAMUser;
 import com.booklibrary.user.service.application.service.IAMService;
 import com.booklibrary.user.service.data.dto.UserDto;
-import com.booklibrary.user.service.data.ports.input.UserService;
+import com.booklibrary.user.service.data.impl.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

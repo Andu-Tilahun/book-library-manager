@@ -4,7 +4,6 @@ import com.booklibrary.user.service.data.dto.UserDto;
 import com.booklibrary.user.service.data.entity.UserEntity;
 import com.booklibrary.user.service.data.exception.UserDomainException;
 import com.booklibrary.user.service.data.mapper.UserMapper;
-import com.booklibrary.user.service.data.ports.input.UserService;
 import com.booklibrary.user.service.data.repository.UserRepository;
 import org.springframework.stereotype.Service;
 

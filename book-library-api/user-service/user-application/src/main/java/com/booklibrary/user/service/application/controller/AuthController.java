@@ -7,7 +7,7 @@ import com.booklibrary.user.service.application.service.IAMService;
 import com.booklibrary.user.service.data.dto.UserDto;
 import com.booklibrary.user.service.data.entity.Gender;
 import com.booklibrary.user.service.data.entity.Role;
-import com.booklibrary.user.service.data.ports.input.UserService;
+import com.booklibrary.user.service.data.impl.UserService;
 import lombok.extern.slf4j.Slf4j;
 import net.minidev.json.JSONObject;
 import org.springframework.http.ResponseEntity;
